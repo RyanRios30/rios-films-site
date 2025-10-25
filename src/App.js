@@ -10,14 +10,7 @@ export default function App() {
     <>
       <header className="site-header" aria-label="Primary">
        <div className="brand">
-  <img 
-    src="/assets/img/logo.png" 
-    alt="Rios Films Logo" 
-    className="brand__logo" 
-    onError={(e) => {
-      e.target.outerHTML = '<div class="brand__logo" aria-hidden="true">RF</div>';
-    }}
-  />
+  
   <div className="brand__name">Rios Films</div>
 </div>
 
@@ -34,8 +27,20 @@ export default function App() {
             Book
           </a>
         </nav>
-        <button className="hamburger" aria-label="Open menu" onClick={toggleMobile}>☰</button>
-        <div className="mobile-nav" id="mobileNav" role="menu">
+        <button
+  className="hamburger"
+  aria-label="Open menu"
+  onClick={toggleMobile}
+  style={{ display: "none" }}
+>
+  ☰
+</button>
+<div
+  className="mobile-nav"
+  id="mobileNav"
+  role="menu"
+  style={{ display: "none" }}
+>
           <a href="#top" role="menuitem">Home</a>
           <a href="#about" role="menuitem">About</a>
           <a href="#contact" role="menuitem">Contact</a>
@@ -53,35 +58,19 @@ export default function App() {
         </div>
         <section className="hero__content">
           <div>
-            <h1 className="headline">Cinematic wedding films that feel like you.</h1>
-            <p className="subhead">Seattle · Bellevue · Two-videographer coverage · 6–8 minute highlights</p>
+            <h1 className="headline">Capturing Life&apos;s Precious Moments</h1>
+            <p className="subhead">Weeding Videographers and Editors Based In Bellevue WA</p>
             <div className="cta">
-              <a className="btn btn--primary" href="https://calendly.com/your-username/consultation" target="_blank" rel="noopener noreferrer">Book a Consultation</a>
-              <a className="btn btn--ghost" href="#reel">Watch a 60s Reel</a>
+              <a className="btn btn--primary" href="#packages">
+                View Wedding Video Packages
+              </a>
             </div>
           </div>
         </section>
       </main>
 
-      <section className="strip" aria-label="Key highlights">
-        <div className="chip">Two Videographers</div>
-        <div className="chip">6–8 Minute Highlight</div>
-        <div className="chip">Vows & Speeches Audio</div>
-      </section>
+<section style={{ height: "30vh" }} />
 
-      <section id="reel" style={{maxWidth:"var(--maxw)",margin:"24px auto 72px",padding:"0 20px"}}>
-        <div style={{position:"relative",paddingTop:"56.25%",border:"1px solid #1b1b1b",borderRadius:"12px",overflow:"hidden",background:"#0b0b0b"}}>
-          <iframe
-            title="Featured Wedding Reel"
-            src="https://player.vimeo.com/video/000000000?h=autoplay=0&muted=0"
-            loading="lazy"
-            allow="autoplay; fullscreen; picture-in-picture"
-            allowFullScreen
-            style={{position:"absolute",inset:0,width:"100%",height:"100%",border:0}}
-          />
-        </div>
-        <p style={{color:"var(--muted)",textAlign:"center",margin:"10px 0 0"}}>Featured: Your favorite wedding — Venue, Date</p>
-      </section>
 
       <footer>© 2025 Rios Films · Seattle & Bellevue · PNW</footer>
     </>
