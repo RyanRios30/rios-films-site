@@ -1,78 +1,81 @@
 import React from "react";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import Packages from "./pages/Packages";
 
-export default function App() {
-  const toggleMobile = () => {
-    const el = document.getElementById("mobileNav");
-    el.style.display = el.style.display === "block" ? "none" : "block";
-  };
-
+function Home() {
   return (
     <>
-      <header className="site-header" aria-label="Primary">
-       <div className="brand">
-  
-  <div className="brand__name">Rios Films</div>
-</div>
-
-        <nav className="nav" aria-label="Main">
-          <a href="#top">Home</a>
-          <a href="#about">About</a>
-          <a href="#contact">Contact</a>
-          <a
-            href="https://calendly.com/your-username/consultation"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ color: "var(--muted)" }}
-          >
-            Book
-          </a>
-        </nav>
-        <button
-  className="hamburger"
-  aria-label="Open menu"
-  onClick={toggleMobile}
-  style={{ display: "none" }}
->
-  ☰
-</button>
-<div
-  className="mobile-nav"
-  id="mobileNav"
-  role="menu"
-  style={{ display: "none" }}
->
-          <a href="#top" role="menuitem">Home</a>
-          <a href="#about" role="menuitem">About</a>
-          <a href="#contact" role="menuitem">Contact</a>
-          <a href="https://calendly.com/your-username/consultation" target="_blank" rel="noopener noreferrer" role="menuitem">Book</a>
-        </div>
-      </header>
-
       <main id="top" className="hero" aria-label="Hero">
         <div className="hero__media" aria-hidden="true">
-          {/* files live in public/assets/... so use a leading slash */}
-          <video id="heroVideo" autoPlay muted loop playsInline poster="/assets/img/cover.jpg">
+          <video
+            id="heroVideo"
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster="/assets/img/cover.jpg"
+          >
             <source src="/assets/video/hero.mp4" type="video/mp4" />
           </video>
           <div className="hero__overlay"></div>
         </div>
+
         <section className="hero__content">
           <div>
             <h1 className="headline">Capturing Life&apos;s Precious Moments</h1>
-            <p className="subhead">Weeding Videographers and Editors Based In Bellevue WA</p>
+            <p className="subhead">
+              Wedding Films Based in Bellevue, Washington
+            </p>
             <div className="cta">
-              <a className="btn btn--primary" href="#packages">
+              <Link className="btn btn--primary" to="/packages">
                 View Wedding Video Packages
-              </a>
+              </Link>
             </div>
           </div>
         </section>
       </main>
 
-<section style={{ height: "30vh" }} />
+      {/* Spacer or later footer intro section */}
+      <section style={{ height: "10vh" }} />
+    </>
+  );
+}
 
+export default function App() {
+  return (
+    <BrowserRouter>
+      <header className="site-header" aria-label="Primary">
+        <div className="brand">
+          <div className="brand__name">Rios Films</div>
+        </div>
+
+        <nav className="nav" aria-label="Main">
+          <Link to="/">Home</Link>
+          <Link to="/packages">Packages</Link>
+        </nav>
+
+        {/* Hide mobile menu for now */}
+        <button
+          className="hamburger"
+          aria-label="Open menu"
+          style={{ display: "none" }}
+        >
+          ☰
+        </button>
+        <div
+          className="mobile-nav"
+          id="mobileNav"
+          role="menu"
+          style={{ display: "none" }}
+        />
+      </header>
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/packages" element={<Packages />} />
+      </Routes>
 
       <footer>© 2025 Rios Films · Seattle & Bellevue · PNW</footer>
-    </>
+    </BrowserRouter>
   );
 }
